@@ -2,8 +2,9 @@ const inputs = document.querySelectorAll('.input-box>input');
 inputs.forEach((elem) => {
   requireInput(elem);
   elem.addEventListener('focusout', () => {
+    elem.setCustomValidity('');
     if (!elem.valid) {
-
+      const validState = elem.dataset.objKey;
     }
   });
 });
