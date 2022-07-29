@@ -138,10 +138,10 @@ const confirmPassword = document.querySelector('#confirm-password');
 confirmPassword.required = true;
 
 function validateConfirmPass() {
-  const passwordVal = document.querySelector('#password').value;
+  const passwordElem = document.querySelector('#password');
   const confirmPass = document.querySelector('#confirm-password');
   if (confirmPass.value !== '') {
-    if (confirmPass.value !== passwordVal) {
+    if (confirmPass.value !== passwordElem.value) {
       confirmPass.setCustomValidity('Passwords must match');
       confirmPass.reportValidity();
       const errMsg = document.querySelector(`#${confirmPass.id} + .validation-text`);
@@ -160,5 +160,6 @@ function validateConfirmPassOnInput() {
   }
 }
 
+password.addEventListener('focusout', validateConfirmPass);
 confirmPassword.addEventListener('focusout', validateConfirmPass);
 confirmPassword.addEventListener('input', validateConfirmPassOnInput);
